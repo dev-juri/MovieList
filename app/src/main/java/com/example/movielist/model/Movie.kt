@@ -1,6 +1,6 @@
 package com.example.movielist.model
 
-data class Movie (
+data class Movie(
     var name: String,
     var realname: String,
     var team: String,

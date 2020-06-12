@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Movie list</string>
+    <string name="loading_error">Could not load data. Please make sure you\'re connected to the internet then try again.</string>
 </resources>

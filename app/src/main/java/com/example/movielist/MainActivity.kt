@@ -1,8 +1,8 @@
 package com.example.movielist
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movielist.model.Movie
 import com.example.movielist.service.RetrofitService
@@ -10,7 +10,6 @@ import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,11 +31,13 @@ class MainActivity : AppCompatActivity() {
         getAllMovieList()
     }
 
-    private fun getAllMovieList(){
+    private fun getAllMovieList() {
         dialog.show()
+        val errorMsg: String = getString(R.string.loading_error)
 
-        mService.getMovieList().enqueue(object : retrofit2.Callback<MutableList<Movie>>{
+        mService.getMovieList().enqueue(object : retrofit2.Callback<MutableList<Movie>> {
             override fun onFailure(call: Call<MutableList<Movie>>, t: Throwable) {
+                Toast.makeText(baseContext, errorMsg, Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(
